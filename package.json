@@ -1,0 +1,32 @@
+{
+  "name": "be-assignment-galleonpt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitlab.com:ki-group-pt/xgeekshq/assignments/be-assignment-galleonpt.git",
+  "author": "Zé Luís <jose.rodrigues@peakit.pt>",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn --exit-child --watch src src/server"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.10.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "ts-node-dev": "^1.1.8"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.13.0",
+    "bcryptjs": "^2.4.3",
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "prisma": "^3.10.0",
+    "typescript": "^4.6.2",
+    "yarn": "^1.22.17"
+  }
+}

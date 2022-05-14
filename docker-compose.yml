@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  db_xgeeks:
+    container_name: "db_xgeeks"
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - "5434:5432"
+    volumes:
+      - "./data/postgres/:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: xgeeks
+    networks:
+      - app-tier
+  app:
+    container_name: interview_calendar_api
+    build: .
+    ports:
+      - "3333:3333"
+    volumes:
+      - ".:/app"
+    depends_on:
+      - db_xgeeks
+    networks:
+      - app-tier
+
+networks:
+  app-tier:
+    driver: bridge

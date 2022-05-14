@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["interactiveTransactions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Interviewers {
+  id       String @id @default(uuid())
+  name     String
+  availabilities InterviewersAvailability[]
+  @@map("interviewers")
+}
+
+model InterviewersAvailability{
+  id       String @id @default(uuid())
+  start_date Int
+  end_date Int
+  interviewer_id String
+  interviewer Interviewers @relation(fields: [interviewer_id], references: [id])
+  @@map("interviewers_availability")
+}
+
+model Candidates {
+  id       String @id @default(uuid())
+  name     String
+  availabilities CandidatesAvailability[]
+  @@map("candidates")
+}
+
+model CandidatesAvailability{
+  id       String @id @default(uuid())
+  start_date Int
+  end_date Int
+  candidate_id String
+  candidate Candidates @relation(fields: [candidate_id], references: [id])
+  @@map("candidates_availability")
+}
